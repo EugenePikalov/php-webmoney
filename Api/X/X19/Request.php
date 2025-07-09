@@ -24,6 +24,7 @@ class Request extends X\Request
     const TYPE_EMONEY = 5;
     const TYPE_SMS = 6;
     const TYPE_MOBILE = 7;
+    const TYPE_CRYPTO = 8;
 
     /** @deprecated Use const TYPE_TRANSFER instead */
     const TYPE_SDP = self::TYPE_TRANSFER;
@@ -95,6 +96,14 @@ class Request extends X\Request
     /** @var string userinfo/phone */
     protected $userPhone;
 
+    /** @var string userinfo/crypto_name */
+    protected $userCryptoName;
+
+    /** @var string userinfo/crypto_address */
+    protected $userCryptoAddress;
+
+    
+
     /**
      * @param string $authType
      *
@@ -139,6 +148,8 @@ class Request extends X\Request
                         'userEMoneyName' => array('operationType' => array(self::TYPE_EMONEY)),
                         'userEMoneyId' => array('operationType' => array(self::TYPE_EMONEY)),
                         'userPhone' => array('operationType' => array(self::TYPE_SMS, self::TYPE_MOBILE)),
+                        'userCryptoName' => array('operationType' => array(self::TYPE_CRYPTO)),
+                        'userCryptoAddress' => array('operationType' => array(self::TYPE_CRYPTO)),
                 ),
                 RequestValidator::TYPE_RANGE => array(
                         'language' => array(self::LANG_RU, self::LANG_EN),
@@ -190,6 +201,8 @@ class Request extends X\Request
         $xml .= self::xmlElement('emoney_name', $this->userEMoneyName);
         $xml .= self::xmlElement('emoney_id', $this->userEMoneyId);
         $xml .= self::xmlElement('phone', $this->userPhone);
+        $xml .= self::xmlElement('crypto_name', $this->userCryptoName);
+        $xml .= self::xmlElement('crypto_address', $this->userCryptoAddress);
         $xml .= '</userinfo>';
         $xml .= '</passport.request>';
 
@@ -468,5 +481,39 @@ class Request extends X\Request
     public function setUserPhone($userPhone)
     {
         $this->userPhone = (string)$userPhone;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getUserCryptoName()
+    {
+        return $this->userCryptoName;
+    }
+
+    /**
+     * @param string $userCryptoName
+     */
+    public function setCryptoName($userCryptoName)
+    {
+        $this->userCryptoName = (string)$userCryptoName;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getUserCryptoAddress()
+    {
+        return $this->userCryptoAddress;
+    }
+
+    /**
+     * @param string $userCryptoAddress
+     */
+    public function setUserCryptoAddress($userCryptoAddress)
+    {
+        $this->userCryptoAddress = (string)$userCryptoAddress;
     }
 }
