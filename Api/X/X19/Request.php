@@ -113,11 +113,11 @@ class Request extends X\Request
     {
         switch ($authType) {
             case self::AUTH_CLASSIC:
-                $this->url = 'https://apipassport.webmoney.ru/XMLCheckUser.aspx';
+                $this->url = 'https://apipassport.web.money/XMLCheckUser.aspx';
                 break;
 
             case self::AUTH_LIGHT:
-                $this->url = 'https://apipassportcrt.webmoney.ru/XMLCheckUserCert.aspx';
+                $this->url = 'https://apipassportcrt.web.money/XMLCheckUserCert.aspx';
                 break;
 
             default:
