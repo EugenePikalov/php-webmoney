@@ -41,7 +41,7 @@ class Request extends X\Request
             throw new ApiException('This interface doesn\'t support the authentication type given.');
         }
 
-        $this->url = 'https://passport.webmoney.ru/asp/XMLGetWMPassport.asp';
+        $this->url = 'https://apipassport.web.money/asp/XMLGetWMPassport.asp';
 
         $this->paramDict = self::DICT_SHOW;
         $this->paramInfo = self::INFO_SHOW;
